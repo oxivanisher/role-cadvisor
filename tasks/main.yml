@@ -1,0 +1,38 @@
+---
+
+- name: ensure network for cadvisor
+  community.docker.docker_network:
+    name: cadvisor
+  ignore_errors: '{{ ansible_check_mode }}'
+
+- name: ensure redis container for cadvisor
+  community.docker.docker_container:
+    name: cadvisor-redis
+    image: redis:latest
+    detach: yes
+    pull: yes
+    networks:
+      - name: cadvisor
+    restart_policy: unless-stopped
+  ignore_errors: '{{ ansible_check_mode }}'
+
+- name: create cadvisor container
+  community.docker.docker_container:
+    name: cadvisor
+    image: gcr.io/cadvisor/cadvisor:latest
+    ports:
+        - "{{ cadvisor_ip }}:8080:8080"
+    restart_policy: unless-stopped
+    detach: yes
+    pull: yes
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+    command:
+      - '--housekeeping_interval=15s'
+      - '--docker_only=true'
+    networks:
+      - name: cadvisor
+  ignore_errors: '{{ ansible_check_mode }}'
