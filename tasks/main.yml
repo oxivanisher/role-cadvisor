@@ -9,8 +9,8 @@
   community.docker.docker_container:
     name: cadvisor-redis
     image: redis:latest
-    detach: yes
-    pull: yes
+    detach: true
+    pull: true
     networks:
       - name: cadvisor
     restart_policy: unless-stopped
@@ -21,10 +21,10 @@
     name: cadvisor
     image: gcr.io/cadvisor/cadvisor:latest
     ports:
-        - "{{ cadvisor_ip }}:8080:8080"
+      - "{{ cadvisor_ip }}:8080:8080"
     restart_policy: unless-stopped
-    detach: yes
-    pull: yes
+    detach: true
+    pull: true
     volumes:
       - /:/rootfs:ro
       - /var/run:/var/run:rw
