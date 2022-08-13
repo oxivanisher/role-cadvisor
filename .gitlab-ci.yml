@@ -9,4 +9,3 @@ ansible-lint:
     - docker
   script:
     - ansible-lint .
-
