@@ -4,6 +4,7 @@ galaxy_info:
   author: Marc Urben
   description: Install cadvisor container for prometheus monitoring
   company: Thunderbluff
+  name: cadvisor
 
   # If the issue tracker for your role is not on github, uncomment the
   # next line and provide a value
