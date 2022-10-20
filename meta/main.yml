@@ -2,6 +2,7 @@
 
 galaxy_info:
   role_name: cadvisor
+  namespace: oxivanisher
   author: Marc Urben
   description: Install cadvisor container for prometheus monitoring
   company: Thunderbluff
