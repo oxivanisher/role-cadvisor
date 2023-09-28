@@ -1,11 +1,10 @@
 ---
-
-- name: ensure network for cadvisor
+- name: Ensure network for cadvisor
   community.docker.docker_network:
     name: cadvisor
-  ignore_errors: '{{ ansible_check_mode }}'
+  ignore_errors: "{{ ansible_check_mode }}"
 
-- name: ensure redis container for cadvisor
+- name: Ensure redis container for cadvisor
   community.docker.docker_container:
     name: cadvisor-redis
     image: redis:latest
@@ -14,9 +13,9 @@
     networks:
       - name: cadvisor
     restart_policy: unless-stopped
-  ignore_errors: '{{ ansible_check_mode }}'
+  ignore_errors: "{{ ansible_check_mode }}"
 
-- name: create cadvisor container
+- name: Create cadvisor container
   community.docker.docker_container:
     name: cadvisor
     image: gcr.io/cadvisor/cadvisor:latest
@@ -31,8 +30,8 @@
       - /sys:/sys:ro
       - /var/lib/docker/:/var/lib/docker:ro
     command:
-      - '--housekeeping_interval=15s'
-      - '--docker_only=true'
+      - "--housekeeping_interval=15s"
+      - "--docker_only=true"
     networks:
       - name: cadvisor
-  ignore_errors: '{{ ansible_check_mode }}'
+  ignore_errors: "{{ ansible_check_mode }}"
