@@ -51,5 +51,6 @@ galaxy_info:
     - cadvisor
 
 dependencies:
-  - role: community.docker.docker_container
-  - role: community.docker.docker_network
+  []
+  # - role: community.docker.docker_container
+  # - role: community.docker.docker_network
