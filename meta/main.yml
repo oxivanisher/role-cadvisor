@@ -50,7 +50,6 @@ galaxy_info:
     - docker
     - cadvisor
 
-dependencies: []
-
-collections:
-  - community.docker
+dependencies:
+  - role: community.docker.docker_container
+  - role: community.docker.docker_network
