@@ -3,6 +3,8 @@
   community.docker.docker_network:
     name: cadvisor
   ignore_errors: "{{ ansible_check_mode }}"
+  become: true
+  become_user: root
 
 - name: Ensure redis container for cadvisor
   community.docker.docker_container:
@@ -14,6 +16,8 @@
       - name: cadvisor
     restart_policy: unless-stopped
   ignore_errors: "{{ ansible_check_mode }}"
+  become: true
+  become_user: root
 
 - name: Create cadvisor container
   community.docker.docker_container:
@@ -35,3 +39,5 @@
     networks:
       - name: cadvisor
   ignore_errors: "{{ ansible_check_mode }}"
+  become: true
+  become_user: root
