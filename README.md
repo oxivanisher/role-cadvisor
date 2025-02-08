@@ -1,6 +1,6 @@
 cadvisor
 ========
-[![Ansible Lint](https://github.com/oxivanisher/role-role-cadvisor/actions/workflows/ansible-lint.yml/badge.svg)](https://github.com/oxivanisher/role-role-cadvisor/actions/workflows/ansible-lint.yml)
+[![Ansible Lint](https://github.com/oxivanisher/role-cadvisor/actions/workflows/ansible-lint.yml/badge.svg)](https://github.com/oxivanisher/role-cadvisor/actions/workflows/ansible-lint.yml)
 
 Enable cadvisor and corresponding redis docker container.
 
